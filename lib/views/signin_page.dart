@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/blocs/signIn_bloc/sign_in_bloc.dart';
+import 'package:weather_app/views/signup_page.dart';
 import 'package:weather_app/widgets/color_pallete.dart';
 import 'package:weather_app/widgets/custom_button.dart';
 import 'package:weather_app/widgets/custom_textfield.dart';
@@ -14,21 +14,8 @@ class SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final SignInBloc signInBloc= SignInBloc();
-    return  BlocConsumer<SignInBloc, SignInState>(
-      bloc: signInBloc,
-      // listenWhen: (previous, current) {
-
-      // },
-      // buildWhen: (previous, current) {
-        
-      // },
-
-      listener: (context, state) {
-        // TODO: implement listener
-      },
-      builder: (context, state) {
-        return Scaffold(
+ 
+    return   Scaffold(
           body: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +38,7 @@ class SigninPage extends StatelessWidget {
                 const SizedBox(height: 20,),
     
                  Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -64,7 +51,10 @@ class SigninPage extends StatelessWidget {
                        CustomButton(
                         buttonText: "Create Account", 
                         onPressed: () { 
-
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUpPage()),
+                          );
                         },
                       )
                     ],
@@ -75,7 +65,6 @@ class SigninPage extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
+    
   }
 }
