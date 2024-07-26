@@ -28,3 +28,12 @@ class AuthFailed extends AuthState {
   @override
   List<Object> get props => [error];
 }
+
+class AuthSnackbarState extends AuthState {
+  final String message;
+
+  const AuthSnackbarState(this.message);
+
+  @override
+  List<Object> get props => [message];
+}

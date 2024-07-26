@@ -12,12 +12,29 @@ class SignUpBtnPressed extends AuthEvent {
   final String email;
   final String password;
 
-  SignUpBtnPressed({
-    required this.name, 
-    required this.email, 
+  const SignUpBtnPressed({
+    required this.name,
+    required this.email,
     required this.password
-    });
+  });
 
   @override
   List<Object> get props => [name, email, password];
 }
+
+class SignInBtnPressed extends AuthEvent{
+  final String email;
+  final String password;
+
+  const SignInBtnPressed({
+    required this.email, 
+    required this.password
+  });
+    @override
+  List<Object> get props => [ email, password];
+}
+
+
+class CheckAuthStatus extends AuthEvent {}
+
+class SignOut extends AuthEvent {}
