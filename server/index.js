@@ -1,14 +1,16 @@
-const express = require('express');
-const mongoose= require('mongoose');
+//"mongodb+srv://manikttmg11:r5rBdGixDzA52SdZ@cluster0.faxt2nb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-const authRouter=require("./routes/auth")
+const express = require('express');
+const mongoose = require('mongoose');
+const authRouter = require("./routes/auth");
+const bodyParser = require('body-parser');
 
 const PORT = 3000;
 const app = express();
-const DB="mongodb+srv://manikttmg11:r5rBdGixDzA52SdZ@cluster0.faxt2nb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const DB = "mongodb+srv://manikttmg11:r5rBdGixDzA52SdZ@cluster0.faxt2nb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-//middleware
-app.use(express.json())
+// Middleware
+app.use(bodyParser.json()); // Add this line to use body-parser
 app.use(authRouter);
 
 mongoose.connect(DB)
@@ -22,3 +24,4 @@ mongoose.connect(DB)
 app.listen(PORT, () => {
     console.log(`Server connected to port ${PORT}`);
 });
+
