@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/blocs/auth_bloc/auth_bloc.dart';
+import 'package:weather_app/blocs/landingPageBloc/landing_page_bloc.dart';
 import 'package:weather_app/repositories/auth_repositary.dart';
-import 'package:weather_app/views/home_page.dart';
-import 'package:weather_app/views/signin_page.dart';
+import 'package:weather_app/views/ScreenViews/home_page.dart';
+import 'package:weather_app/views/landing_page.dart';
+import 'package:weather_app/views/AuthViews/signin_page.dart';
+
 
 void main() {
   final AuthRepositary authRepository = AuthRepositary();
@@ -18,10 +21,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(authRepository: authRepository)
-        ..add(CheckAuthStatus()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthBloc(authRepository: authRepository)
+            ..add(CheckAuthStatus()),
+        ),
+        BlocProvider(
+          create: (context) => LandingPageBloc(),
+        ),
+      ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: AuthDecider(),
       ),
     );
@@ -37,14 +48,13 @@ class AuthDecider extends StatelessWidget {
         if (state is AuthLoading) {
           return const CircularProgressIndicator();
         } else if (state is AuthSuccess) {
-          return HomePage();
+          return LandingPage();
         } else if (state is AuthInitial) {
-          return SigninPage(); // Navigate to SigninPage on AuthInitial state
+          return SigninPage();
         } else {
-          return Container(); // Handle other states or provide a default widget
+          return Container();
         }
       },
     );
   }
 }
-

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/blocs/auth_bloc/auth_bloc.dart';
-import 'package:weather_app/views/home_page.dart';
-import 'package:weather_app/views/signin_page.dart';
+import 'package:weather_app/views/landing_page.dart';
+import 'package:weather_app/views/AuthViews/signin_page.dart';
 import 'package:weather_app/widgets/color_pallete.dart';
 import 'package:weather_app/widgets/customSnackbar.dart';
 import 'package:weather_app/widgets/custom_button.dart';
@@ -28,7 +28,7 @@ class _SignUpPageState extends State<SignUpPage> {
           if (state is AuthSuccess) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => HomePage()),
+              MaterialPageRoute(builder: (context) => LandingPage()),
             );
           } else if (state is AuthFailed) {
             showSnackBar(context, state.error);
