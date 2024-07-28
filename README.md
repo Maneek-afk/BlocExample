@@ -1,16 +1,25 @@
-# weather_app
+# Flutter Blog Application
 
-A new Flutter project.
 
-## Getting Started
+**Description:**
+A blog application built with Flutter, using Bloc for state management and MVVM architecture. The backend is powered by Node.js, Express.js, and MongoDB.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+**Project Structure:**
+* lib: Contains Flutter app code.
+* backend: Contains Node.js server code.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Project Structure:**
+* lib: Contains Flutter app code.
+* server: Contains Node.js server code.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  
+**Technologies:**
+* Flutter
+* Bloc
+* MVVM
+* Node.js
+* Express.js
+* MongoDB
+
+  
