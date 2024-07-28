@@ -7,7 +7,7 @@ A blog application built with Flutter, using Bloc for state management and MVVM 
 
 **Project Structure:**
 * lib: Contains Flutter app code.
-* backend: Contains Node.js server code.
+* server: Contains Node.js server code.
 
 **Project Structure:**
 * lib: Contains Flutter app code.
