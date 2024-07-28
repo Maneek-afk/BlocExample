@@ -18,5 +18,8 @@ A blog application built with Flutter, using Bloc for state management and MVVM 
 * Express.js
 * MongoDB
 
+UI Screenshot:
+Below is a screenshot of the user interface showcasing the blog's main layout and features.
+
   
 ![image](https://github.com/user-attachments/assets/1a9f36bf-7c4a-4623-a230-9f8c0c0aaf5d)
