@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require("./routes/auth");
+const postRouter = require("./routes/blogPost");
 const bodyParser = require('body-parser');
 
 const PORT = 3000;
@@ -12,6 +13,7 @@ const DB = "mongodb+srv://manikttmg11:r5rBdGixDzA52SdZ@cluster0.faxt2nb.mongodb.
 // Middleware
 app.use(bodyParser.json()); // Add this line to use body-parser
 app.use(authRouter);
+app.use(postRouter);
 
 mongoose.connect(DB)
     .then(() => {
