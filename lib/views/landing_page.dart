@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:weather_app/blocs/landingPageBloc/landing_page_bloc.dart';
 import 'package:weather_app/views/AuthViews/signin_page.dart';
+import 'package:weather_app/views/ScreenViews/addPost_page.dart';
 import 'package:weather_app/views/ScreenViews/favorite_page.dart';
 import 'package:weather_app/views/ScreenViews/home_page.dart';
 import 'package:weather_app/views/ScreenViews/profile_page.dart';
@@ -11,6 +12,11 @@ List<BottomNavigationBarItem> bottomNavItems= <BottomNavigationBarItem>[
   const BottomNavigationBarItem(
     icon: Icon(Icons.home_outlined),
     label: "Home"
+    ),
+
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.add_box_outlined),
+    label: "Post"
     ),
 
   const BottomNavigationBarItem(
@@ -24,13 +30,16 @@ List<BottomNavigationBarItem> bottomNavItems= <BottomNavigationBarItem>[
     ),
 ];
 
-const List<Widget> bottomNavScreen=<Widget>[
-  HomePage(),
-  FavoritePage(),
-  ProfilePage(),
+ List<Widget> bottomNavScreen=<Widget>[
+  const HomePage(),
+  AddpostPage(),
+  const FavoritePage(),
+  const ProfilePage(),
 ];
 
 class LandingPage extends StatelessWidget {
+  const LandingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LandingPageBloc, LandingPageState>(

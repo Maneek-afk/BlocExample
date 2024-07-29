@@ -43,6 +43,7 @@ dependencies:
   http: ^1.2.2
   shared_preferences: ^2.2.3
   google_fonts: ^6.2.1
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
