@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/widgets/comment_dialog.dart';
 
 class BlogPost extends StatefulWidget {
   const BlogPost({
@@ -125,12 +126,18 @@ class _BlogPostState extends State<BlogPost> {
           // View all comments
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-            child: Text(
-              "View all 12 comments",
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.w900,
-                fontSize: 12,
-                color: Colors.black,
+            child: GestureDetector(
+              onTap: (){
+                _showCommentDialog(context);
+                print("pressed");
+              },
+              child: Text(
+                "View all 12 comments",
+                style: GoogleFonts.lato(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 12,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
@@ -171,3 +178,12 @@ class _BlogPostState extends State<BlogPost> {
     );
   }
 }
+
+  void _showCommentDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CommentDialog();
+      },
+    );
+  }

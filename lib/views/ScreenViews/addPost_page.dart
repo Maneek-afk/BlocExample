@@ -196,9 +196,9 @@ class _AddpostPageState extends State<AddpostPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,),
+                const SizedBox(height: 30,),
                 _isLoading
-                    ? Center(child: CircularProgressIndicator())
+                    ? const Center(child: CircularProgressIndicator())
                     : ElevatedButton(
                         onPressed: () {
                           BlocProvider.of<PostBlogBloc>(context).add(postUploadbtnPressed(

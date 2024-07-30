@@ -25,6 +25,7 @@ class SigninPage extends StatelessWidget {
               MaterialPageRoute(builder: (context) => LandingPage()),
             );
           } else if (state is AuthSnackbarState) {
+            print("error");
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.message)),
             );
