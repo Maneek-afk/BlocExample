@@ -2,7 +2,7 @@
 
 
 **Description:**
-A blog application built with Flutter, using Bloc for state management and MVVM architecture. The backend is powered by Node.js, Express.js, and MongoDB.
+A begineer tries to build a blog application built with Flutter, using Bloc for state management and MVVM architecture. The backend is powered by Node.js, Express.js, and MongoDB.
 
 
 **Project Structure:**
