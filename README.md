@@ -18,6 +18,8 @@ A begineer tries to build a blog application built with Flutter, using Bloc for 
 * Express.js
 * MongoDB
 
+  completted all authentication autorization using bloc pattern.😊
+
 UI Screenshot:
 Below is a screenshot of the user interface showcasing the blog's main layout and features.
 
