@@ -6,6 +6,7 @@ import 'package:weather_app/models/post.dart';
 String uri = "http://10.0.2.2:3000";
 
 class PostRepositary {
+
   Future<void> postBlog({
     required String imageUrl,
     required String title,
@@ -45,4 +46,15 @@ class PostRepositary {
       throw Exception('Error occurred: ${error.toString()}');
     }
   }
+
+  Future<List<Post>> fetchPosts() async {
+  final response = await http.get(Uri.parse('http://10.0.2.2:3000/api/getposts'));
+
+  if (response.statusCode == 200) {
+    List<dynamic> data = json.decode(response.body);
+    return data.map((json) => Post.fromMap(json)).toList();
+  } else {
+    throw Exception('Failed to load posts');
+  }
+}
 }

@@ -3,16 +3,17 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_app/widgets/comment_dialog.dart';
 
-class BlogPost extends StatefulWidget {
+class BlogPost extends StatelessWidget {
   const BlogPost({
-    super.key,
+    Key? key,
     required this.imageurl,
     required this.postTitle,
     required this.postContent,
     required this.heartIconPressed,
     required this.commentIconPressed,
     required this.shareIconPressed,
-  });
+    required this.commentCount,
+  }) : super(key: key);
 
   final String imageurl;
   final String postTitle;
@@ -20,12 +21,8 @@ class BlogPost extends StatefulWidget {
   final VoidCallback heartIconPressed;
   final VoidCallback commentIconPressed;
   final VoidCallback shareIconPressed;
+  final int commentCount;
 
-  @override
-  State<BlogPost> createState() => _BlogPostState();
-}
-
-class _BlogPostState extends State<BlogPost> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,8 +35,6 @@ class _BlogPostState extends State<BlogPost> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          // Image
           ClipRRect(
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(15),
@@ -49,38 +44,29 @@ class _BlogPostState extends State<BlogPost> {
               height: 150,
               width: double.infinity,
               child: Image.network(
-                widget.imageurl,
+                imageurl,
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          
-          // Scrollable Content
-
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    // Heading
-
                     Text(
-                      widget.postTitle,
+                      postTitle,
                       style: GoogleFonts.lato(
                         fontWeight: FontWeight.w800,
                         fontSize: 18,
                         color: Colors.black,
                       ),
                     ),
-                    
-                    SizedBox(height: 10,),
-                    // Content
-
+                    SizedBox(height: 10),
                     Text(
-                      widget.postContent,
+                      postContent,
                       style: GoogleFonts.lato(
                         fontWeight: FontWeight.w800,
                         fontSize: 14,
@@ -92,8 +78,6 @@ class _BlogPostState extends State<BlogPost> {
               ),
             ),
           ),
-          
-          // Icons
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 5),
             child: Row(
@@ -103,36 +87,33 @@ class _BlogPostState extends State<BlogPost> {
                     FontAwesomeIcons.heart,
                     size: 28,
                   ),
-                  onPressed: widget.heartIconPressed,
+                  onPressed: heartIconPressed,
                 ),
                 IconButton(
                   icon: const FaIcon(
                     FontAwesomeIcons.commentDots,
                     size: 28,
                   ),
-                  onPressed: widget.commentIconPressed,
+                  onPressed: commentIconPressed,
                 ),
                 IconButton(
                   icon: const FaIcon(
                     FontAwesomeIcons.paperPlane,
                     size: 26,
                   ),
-                  onPressed: widget.shareIconPressed,
+                  onPressed: shareIconPressed,
                 ),
               ],
             ),
           ),
-          
-          // View all comments
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
             child: GestureDetector(
-              onTap: (){
+              onTap: () {
                 _showCommentDialog(context);
-                print("pressed");
               },
               child: Text(
-                "View all 12 comments",
+                "View all $commentCount comments",
                 style: GoogleFonts.lato(
                   fontWeight: FontWeight.w900,
                   fontSize: 12,
@@ -141,8 +122,6 @@ class _BlogPostState extends State<BlogPost> {
               ),
             ),
           ),
-          
-          // Comment TextField
           TextField(
             decoration: InputDecoration(
               hintText: "Add a comment...",
@@ -159,7 +138,6 @@ class _BlogPostState extends State<BlogPost> {
               disabledBorder: InputBorder.none,
               suffixIcon: TextButton(
                 onPressed: () {
-                  
                   print("Post button pressed!");
                 },
                 child: const Text(
@@ -177,13 +155,13 @@ class _BlogPostState extends State<BlogPost> {
       ),
     );
   }
-}
 
   void _showCommentDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return CommentDialog();
+        return  CommentDialog();
       },
     );
   }
+}

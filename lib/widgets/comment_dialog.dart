@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/widgets/comments.dart';
 
 class CommentDialog extends StatefulWidget {
-  const CommentDialog({super.key});
+  CommentDialog({super.key});
+
+  final List<Map<String, String>> comments = [
+    {'username': 'rakesh', 'commentContent': 'First comment!'},
+    {'username': 'anita', 'commentContent': 'Nice post!'},
+    {'username': 'john', 'commentContent': 'Thanks for sharing.'},
+    {'username': 'maria', 'commentContent': 'Interesting perspective.'},
+  ];
 
   @override
   State<CommentDialog> createState() => _CommentDialogState();
@@ -12,52 +19,43 @@ class CommentDialog extends StatefulWidget {
 class _CommentDialogState extends State<CommentDialog> {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Center(
-        child: Text("Comments",
-                style: GoogleFonts.afacad(           
-                  fontWeight: FontWeight.w800,
-                  fontSize: 22,
-                  color: Colors.black,
-                  ),
-                ),
-      ),                         
-              content: Container(
-                height: 400,
-                width: 320,
-                child:  Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    
-                    const SizedBox(height: 10,),
-                    Text("@Rakesh",
-                      style: GoogleFonts.lato(           
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                      color: Colors.black,
-                    ),
-                    
-                  ),
-                  
-                     Row(                     
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Bla bla bla bla bla ",
-                        style: GoogleFonts.lato(           
-                        fontSize: 14,
-                        color: Colors.black,
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Container(
+        width: 350, // Set the desired width
+        height: 500, // Set the desired height
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            Text(
+              "Comments",
+              style: GoogleFonts.afacad(
+                fontWeight: FontWeight.w800,
+                fontSize: 22,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: widget.comments.map((comment) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 30.0), // Gap between containers
+                      child: Comments(
+                        username: comment['username']!,
+                        commentContent: comment['commentContent']!,
                       ),
-                ),
-                         IconButton( 
-                          onPressed: () { }, 
-                         icon: const Icon(Icons.favorite_border_outlined)
-                         )
-                      ],
-                    )
-
-                  ],
+                    );
+                  }).toList(),
                 ),
               ),
-            );
-        }
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

@@ -19,10 +19,10 @@ List<BottomNavigationBarItem> bottomNavItems= <BottomNavigationBarItem>[
     label: "Post"
     ),
 
-  const BottomNavigationBarItem(
-    icon: Icon(Icons.favorite_outline),
-    label: "Favorite"
-    ),
+  // const BottomNavigationBarItem(
+  //   icon: Icon(Icons.favorite_outline),
+  //   label: "Favorite"
+  //   ),
 
   const BottomNavigationBarItem(
     icon: Icon(Icons.account_box_outlined),
@@ -31,9 +31,9 @@ List<BottomNavigationBarItem> bottomNavItems= <BottomNavigationBarItem>[
 ];
 
  List<Widget> bottomNavScreen=<Widget>[
-  const HomePage(),
+   const HomePage(),
   AddpostPage(),
-  const FavoritePage(),
+  // const FavoritePage(),
   const ProfilePage(),
 ];
 
